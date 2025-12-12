@@ -1,0 +1,30 @@
+<div class="container">
+  <!-- No Students Message -->
+  <div *ngIf="sList.length === 0" class="no-data">
+    <p><a routerLink="/add-student">Add a new student</a></p>
+  </div>
+
+  <!-- Students Table -->
+  <div *ngIf="sList.length > 0" class="table-container">
+    <table class="students-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Gender</th>
+          <th>Hobby</th>
+          <th>Favourite Subject</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of sList; let i = index">
+          <td>{{ student.name }}</td>
+          <td>{{ student.className }}</td>
+          <td>{{ student.gender }}</td>
+          <td>{{ student.hobby }}</td>
+          <td>{{ student.favouriteSubject }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

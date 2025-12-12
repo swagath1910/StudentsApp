@@ -1,0 +1,112 @@
+<div class="container">
+  <h2>Add New Student</h2>
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+   
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="name"
+        required
+        minlength="5"
+        #nameControl="ngModel"
+      />
+      <span *ngIf="nameControl.invalid && nameControl.touched" class="error">
+        Name is required and must be at least 5 characters
+      </span>
+    </div>
+
+   
+    <div class="form-group">
+      <label for="className">Class:</label>
+      <select
+        id="className"
+        name="className"
+        [(ngModel)]="className"
+        required
+      >
+        <option value="">Select a Class</option>
+        <option *ngFor="let cls of classes" [value]="cls">
+          {{ cls }}
+        </option>
+      </select>
+      <span *ngIf="!className" class="message"></span>
+      <span *ngIf="className === 'class 9'" class="message success">
+        You will appear in board exams soon. All the Best !!
+      </span>
+      <span *ngIf="className === 'class 6'" class="message success">
+        Welcome to middle school!
+      </span>
+      <span
+        *ngIf="className && className !== 'class 9' && className !== 'class 6'"
+        class="message info"
+      >
+        Education and hobby go hand in hand!
+      </span>
+    </div>
+
+    
+    <div class="form-group">
+      <label>Gender:</label>
+      <div class="radio-group">
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Male"
+            [(ngModel)]="gender"
+            required
+          />
+          Male
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            [(ngModel)]="gender"
+            required
+          />
+          Female
+        </label>
+      </div>
+    </div>
+
+   
+    <div class="form-group">
+      <label>
+        <input
+          type="checkbox"
+          name="hashobby"
+          [(ngModel)]="hashobby"
+          (change)="onhashobbychange()"
+        />
+        I have a hobby
+      </label>
+    </div>
+
+    
+    <div class="form-group" *ngIf="hashobby">
+      <label for="hobby">Hobby:</label>
+      <input type="text" id="hobby" name="hobby" [(ngModel)]="hobby" />
+    </div>
+
+   
+    <div class="form-group">
+      <label for="favouriteSubject">Favourite Subject:</label>
+      <select id="favouriteSubject" name="favouriteSubject" [(ngModel)]="favouriteSubject">
+        <option value="">Select a Subject</option>
+        <option *ngFor="let subject of subjects" [value]="subject">
+          {{ subject }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="submitting">Submit</button>
+      <button type="button" (click)="oncancel()">Cancel</button>
+    </div>
+  </form>
+</div>

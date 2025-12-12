@@ -1,0 +1,27 @@
+<div class="app-container">
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h1>Student App</h1>
+    </div>
+    <ul class="sidebar-menu">
+      <li>
+        <a routerLink="/students" routerLinkActive="active">
+          <span class="icon">📋</span>
+          <span>View Students</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/add-student" routerLinkActive="active">
+          <span class="icon">➕</span>
+          <span>Add Student</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
